@@ -1,15 +1,16 @@
-import router from './routes/user.route';
+import express from 'express'
+import {config as dotEnvConfig} from 'dotenv'
 
-// lib/app.ts
-import express = require('express');
-// Create a new express application instance
+
 const app: express.Application = express();
-app.get('/', function (req, res) {
-  res.send('Hello World!');
+dotEnvConfig();
+
+const PORT = process.env.PORT || 3000
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
 });
 
-app.use(router)
-
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}!`);
 });
