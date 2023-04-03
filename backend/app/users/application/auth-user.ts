@@ -5,7 +5,10 @@ import { user } from "../domain/user";
  * this function return if the user is authorizared or not
  */
 
-export async function auth(id : string){
-    console.log(id)
-    return;
+export class AuthUser{
+    
+    async run(id : string) {
+        console.log(id)
+        return;
+    }
 }
