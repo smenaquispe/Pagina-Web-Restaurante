@@ -15,6 +15,10 @@ sequelize.authenticate()
 .then(() => console.log('conntected to db'))
 .catch(err => console.log('error connecting to db -> ' + err))
 
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 app.use('/users',userRouter)
 
 app.listen(PORT, () => {

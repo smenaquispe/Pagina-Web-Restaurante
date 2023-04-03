@@ -8,5 +8,6 @@ const userRouter = Router()
  */
 
 userRouter.get('/:id', userController.authorization.bind(userController))
+userRouter.post('/register', userController.register.bind(userController))
 
 export {userRouter}

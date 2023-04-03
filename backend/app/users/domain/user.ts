@@ -4,7 +4,7 @@ import {Model, DataTypes, Sequelize, BuildOptions} from 'sequelize'
  * in domain we create the entity, in this case user
  */
 export interface UserAttributes {
-    id: number,
+    id?: number,
     email: string,
     passwd: string
 }
@@ -25,9 +25,11 @@ export function UserFactory(sequelize : Sequelize) : UserStatic {
         }, 
         email: {
             type: DataTypes.STRING,
+            allowNull: false
         },
         passwd: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     }, {
         timestamps: false // for don hae createdAt and updateAt
