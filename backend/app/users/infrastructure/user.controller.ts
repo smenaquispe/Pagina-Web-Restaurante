@@ -3,14 +3,14 @@ import { AuthUser } from "../application/auth-user";
 
 export class UserController {
 
-    authUser
+    authUser : AuthUser
     constructor(authUser : AuthUser){
         this.authUser = authUser
     }
 
-    async run (req : Request, res : Response) {
+    async authorization (req : Request, res : Response) {
         const {id} = req.params
-        await this.authUser.run(id)
-        res.status(200).send(`id of user ${id}`)
+        const user = await this.authUser.run(id)
+        res.status(200).send(user)
     }
 }

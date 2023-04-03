@@ -9,8 +9,16 @@ import sequelize from "../../shared/db";
 export class AuthUser{
     async run(id : string) {
         const User = UserFactory(sequelize)
-        const users = await User.findAll()
-        console.log(users)
-        return;
+        const user = await User.findAll({where: {id}})
+
+        if(user[0]) return JSON.stringify({
+            'message': 'User authorizared',
+            'user-info': user[0]
+        }) 
+        
+        return JSON.stringify({
+            'message':'Not user id exist',
+            'user-info': null
+        });
     }
 }

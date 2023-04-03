@@ -7,6 +7,6 @@ const userRouter = Router()
  * auth if user exists
  */
 
-userRouter.get('/:id', userController.run.bind(userController))
+userRouter.get('/:id', userController.authorization.bind(userController))
 
 export {userRouter}

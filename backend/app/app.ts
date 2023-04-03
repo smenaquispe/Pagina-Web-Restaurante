@@ -8,7 +8,9 @@ dotEnvConfig();
 
 const PORT = process.env.PORT || 3000
 
-
+/**
+ * db
+ */
 sequelize.authenticate()
 .then(() => console.log('conntected to db'))
 .catch(err => console.log('error connecting to db -> ' + err))
