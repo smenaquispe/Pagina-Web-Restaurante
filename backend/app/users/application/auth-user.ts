@@ -1,4 +1,5 @@
-import { user } from "../domain/user";
+import { UserFactory } from "../domain/user";
+import sequelize from "../../shared/db";
 
 /**
  * is a "case of use"
@@ -6,9 +7,10 @@ import { user } from "../domain/user";
  */
 
 export class AuthUser{
-    
     async run(id : string) {
-        console.log(id)
+        const User = UserFactory(sequelize)
+        const users = await User.findAll()
+        console.log(users)
         return;
     }
 }
