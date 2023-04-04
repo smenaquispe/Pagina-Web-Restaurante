@@ -1,6 +1,12 @@
-//import { UserModel } from '../domain/user.model'
 import { UserAttributes } from '../domain/user.interface'
 import { DataTypes, Sequelize, BuildOptions, Model } from 'sequelize'
+
+
+/**
+ * redifinition of user model, no use sequalize model
+ */
+
+export interface UserModel extends Model<UserAttributes>, UserAttributes {}
 
 export class User extends Model<UserModel, UserAttributes> {}
 
@@ -13,7 +19,7 @@ export type UserStatic = typeof User & {
  * here is the function of user factory, implements of db, 
  */
 
-export function UserFactory(sequelize : Sequelize) : UserStatic {
+export function userFactory(sequelize : Sequelize) : UserStatic {
     return <UserStatic>sequelize.define('users' , {
         id: {
             type: DataTypes.INTEGER,
@@ -32,9 +38,3 @@ export function UserFactory(sequelize : Sequelize) : UserStatic {
         timestamps: false // for don hae createdAt and updateAt
     })
 }
-
-/**
- * redifinition of user model, no use sequalize model
- */
-
-export interface UserModel extends Model<UserAttributes>, UserAttributes {}

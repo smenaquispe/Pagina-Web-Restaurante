@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import { UserModel } from "../domain/user.model";
-import { UserStatic, UserFactory } from "./user.factory";
+import { UserStatic, userFactory } from "./user.factory";
 import { UserAttributes } from "../domain/user.interface";
 import { UserRepository } from "../domain/user.repository";
 
@@ -12,7 +12,7 @@ export class DB implements UserRepository {
 
     private userModel : UserStatic
     constructor(private sequalize : Sequelize) {
-        this.userModel = UserFactory(sequalize)
+        this.userModel = userFactory(sequalize)
     }
 
     async getById(id : number): Promise<UserModel[]> {

@@ -5,7 +5,9 @@
 
 export interface OrderAttributes {
     id?: number,
+    idUser: number,
     price: number,
-    products: Array<number>,
+    idProduct: number,
+    amount: number,
     when: Date
 }

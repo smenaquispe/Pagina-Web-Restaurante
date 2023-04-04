@@ -8,5 +8,5 @@ import { OrderAttributes } from "./order.interface";
 export interface OrderRepository {
     getById(id : number) : Promise<OrderModel[]>
     make(orderAttributes : OrderAttributes) : Promise<OrderModel>
-    getByUserId(userId : number) : Promise<OrderModel[]>
+    getByUserId(idUser : number) : Promise<OrderModel[]>
 }

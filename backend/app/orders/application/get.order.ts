@@ -6,8 +6,8 @@ import { OrderRepository } from "../domain/order.repository";
 export class GetOrder{
     constructor(private orderRepository : OrderRepository){}
 
-    async run(id : string) {
-        const order = await this.orderRepository.getById(parseInt(id))
+    async run(id : number) {
+        const order = await this.orderRepository.getById(id)
         return order
     }
 }
