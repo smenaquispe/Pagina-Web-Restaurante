@@ -6,7 +6,9 @@ export class RegisterUser {
 
     async run(userAttributes : UserAttributes){
         const response = await this.userRepository.create(userAttributes)
-        console.log(response)
-        return response
+        return JSON.stringify({
+            'message' : `User number ${response.id} created`,
+            'user-info' : response
+        })
     }
 }

@@ -1,4 +1,4 @@
-import { UserModel } from '../domain/user.model'
+//import { UserModel } from '../domain/user.model'
 import { UserAttributes } from '../domain/user.interface'
 import { DataTypes, Sequelize, BuildOptions, Model } from 'sequelize'
 
@@ -32,3 +32,9 @@ export function UserFactory(sequelize : Sequelize) : UserStatic {
         timestamps: false // for don hae createdAt and updateAt
     })
 }
+
+/**
+ * redifinition of user model, no use sequalize model
+ */
+
+export interface UserModel extends Model<UserAttributes>, UserAttributes {}

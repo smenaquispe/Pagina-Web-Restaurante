@@ -14,18 +14,8 @@ export class UserController {
     }
 
     async register (req : Request, res : Response) {
-
         const {email, passwd} = req.body
-
-        if(!email || !passwd) {
-            res.send('error in attributes')
-            return
-        }
-
-        const attibutes : UserAttributes = {
-            email, passwd
-        }
-               
+        const attibutes : UserAttributes = {email, passwd}
         const response = await this.registerUser.run(attibutes)
         res.status(200).send(response)
     }
