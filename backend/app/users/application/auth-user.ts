@@ -1,5 +1,4 @@
-import { UserFactory } from "../domain/user";
-import sequelize from "../../shared/db";
+import { UserRepository } from "../domain/user.repository";
 
 /**
  * is a "case of use"
@@ -7,9 +6,12 @@ import sequelize from "../../shared/db";
  */
 
 export class AuthUser{
+
+    constructor(private userRepository : UserRepository){}
+
     async run(id : string) {
-        const User = UserFactory(sequelize)
-        const user = await User.findAll({where: {id}})
+
+        const user = await this.userRepository.getById(parseInt(id))
 
         if(user[0]) return JSON.stringify({
             'message': 'User authorizared',

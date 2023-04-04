@@ -1,20 +1,17 @@
+import { UserModel } from '../domain/user.model'
+import { UserAttributes } from '../domain/user.interface'
+import { DataTypes, Sequelize, BuildOptions, Model } from 'sequelize'
 
-import {Model, DataTypes, Sequelize, BuildOptions} from 'sequelize'
-/**
- * in domain we create the entity, in this case user
- */
-export interface UserAttributes {
-    id?: number,
-    email: string,
-    passwd: string
-}
-
-export interface UserModel extends Model<UserAttributes>, UserAttributes {}
 export class User extends Model<UserModel, UserAttributes> {}
 
 export type UserStatic = typeof User & {
     new (values ? : object, options ? : BuildOptions) : UserModel
 }
+
+/**
+ * 
+ * here is the function of user factory, implements of db, 
+ */
 
 export function UserFactory(sequelize : Sequelize) : UserStatic {
     return <UserStatic>sequelize.define('users' , {

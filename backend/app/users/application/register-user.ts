@@ -1,11 +1,12 @@
-import sequelize from "../../shared/db";
-import { UserAttributes } from "../domain/user";
-import { UserFactory } from "../domain/user";
-
+import { UserRepository } from "../domain/user.repository";
+import { UserAttributes } from "../domain/user.interface";
 export class RegisterUser {
+
+    constructor(private userRepository : UserRepository){}
+
     async run(userAttributes : UserAttributes){
-        const User = UserFactory(sequelize)
-        const response = await User.create(userAttributes)
+        const response = await this.userRepository.create(userAttributes)
+        console.log(response)
         return response
     }
 }

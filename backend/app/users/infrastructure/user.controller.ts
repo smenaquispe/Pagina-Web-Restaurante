@@ -1,17 +1,11 @@
 import { Request, Response } from "express";
 import { AuthUser } from "../application/auth-user";
 import { RegisterUser } from "../application/register-user";
-import { UserAttributes } from "../domain/user";
+import { UserAttributes } from "../domain/user.interface";
 
 export class UserController {
 
-    authUser : AuthUser
-    registerUser : RegisterUser
-
-    constructor(authUser : AuthUser, registerUser : RegisterUser){
-        this.authUser = authUser
-        this.registerUser = registerUser
-    }
+    constructor(private authUser : AuthUser, private registerUser : RegisterUser){}
 
     async authorization (req : Request, res : Response) {
         const {id} = req.params
