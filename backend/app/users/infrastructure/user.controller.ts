@@ -8,7 +8,7 @@ export class UserController {
     constructor(private authUser : AuthUser, private registerUser : RegisterUser){}
 
     async authorization (req : Request, res : Response) {
-        const {id} = req.params
+        const {id} = req.body
         const user = await this.authUser.run(id)
         res.status(200).send(user)
     }

@@ -9,9 +9,9 @@ export class AuthUser{
 
     constructor(private userRepository : UserRepository){}
 
-    async run(id : string) {
+    async run(id : number) {
 
-        const user = await this.userRepository.getById(parseInt(id))
+        const user = await this.userRepository.getById(id)
 
         if(user[0]) return JSON.stringify({
             'message': 'User authorizared',
