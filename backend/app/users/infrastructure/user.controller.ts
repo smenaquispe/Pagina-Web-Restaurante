@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AuthUser } from "../application/auth-user";
-import { RegisterUser } from "../application/register-user";
+import { AuthUser } from "../application/auth.user";
+import { RegisterUser } from "../application/register.user";
 import { UserAttributes } from "../domain/user.interface";
 
 export class UserController {

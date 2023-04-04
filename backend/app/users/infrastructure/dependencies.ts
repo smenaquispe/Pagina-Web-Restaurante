@@ -1,6 +1,6 @@
 import { UserController } from "./user.controller";
-import { AuthUser } from "../application/auth-user";
-import { RegisterUser } from "../application/register-user";
+import { AuthUser } from "../application/auth.user";
+import { RegisterUser } from "../application/register.user";
 import { DB } from "./db";
 import sequelize from "../../shared/db";
 
