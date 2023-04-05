@@ -21,8 +21,8 @@ export class DB implements ProductRepository {
         return response
     }
 
-    async getBySerie(serie: number): Promise<ProductModel[]> {
-        const product = await this.productModel.findAll({where : {serie}})       
+    async getBySerie(idSerie: number): Promise<ProductModel[]> {
+        const product = await this.productModel.findAll({where : {idSerie}})       
         return product
     }
 }

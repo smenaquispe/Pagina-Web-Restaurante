@@ -16,24 +16,8 @@ export function productFactory(sequelize : Sequelize) : ProductStatic {
             allowNull: false,
             primaryKey: true
         }, 
-        serie: {
+        idSerie: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        price: {
-            type: DataTypes.DECIMAL,
-            allowNull: false
-        },
-        market: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        tags: {
-            type: DataTypes.STRING,
             allowNull: false
         }
     }, {

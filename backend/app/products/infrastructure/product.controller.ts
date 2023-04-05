@@ -25,8 +25,8 @@ export class ProductController {
     }
 
     async getBySerie(req : Request, res : Response) {
-        const { serie } = req.body
-        const product = await this.serieProduct.run(serie)
+        const { idSerie } = req.body
+        const product = await this.serieProduct.run(idSerie)
         res.status(200).send(product)
     }
 }
