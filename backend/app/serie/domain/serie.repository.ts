@@ -2,6 +2,6 @@ import { SerieModel } from "./serie.model";
 import { SerieAttributes } from "./serie.interface";
 
 export interface SerieRepository {
-    getById(id : number) : Promise<SerieModel[]>
+    get(serieAtrributes : SerieAttributes) : Promise<SerieModel[]>
     add(serieAtrribute : SerieAttributes) : Promise<SerieModel>
 }

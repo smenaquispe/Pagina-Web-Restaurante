@@ -9,16 +9,26 @@ export class SerieController {
         private addSerie : AddSerie
     ) {}
 
-    async getSerieById(req : Request, res: Response) {
-        const { id } = req.body
-        const serie = await this.getSerie.run(id)
-        res.status(200).send(serie)
+    async getSerieByAttributes(req : Request, res: Response) {
+        try {
+            const data = req.body
+            const attributes : SerieAttributes = {...data}
+            const serie = await this.getSerie.run(attributes)
+            res.status(200).send(serie)
+        } catch (error) {
+            res.send(JSON.stringify({'error' : error}))
+        }
     }
 
     async createSerie(req: Request, res: Response) {
-        const data = req.body
-        const attributes : SerieAttributes = {...data}
-        const response = await this.addSerie.run(attributes)
-        res.status(200).send(response)
+        try {
+            const data = req.body
+            const attributes : SerieAttributes = {...data}
+            const response = await this.addSerie.run(attributes)
+            res.status(200).send(response)
+        } catch (error) {
+            console.log(error)
+            res.send(JSON.stringify({'error' : error}))
+        }
     }
 }

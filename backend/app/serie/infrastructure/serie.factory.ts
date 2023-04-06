@@ -33,6 +33,7 @@ export function serieFactory(sequelize : Sequelize) : SerieStatic {
             allowNull: false
         }
     },{
-        timestamps: false
+        timestamps: false,
+        freezeTableName: true
     })
 }

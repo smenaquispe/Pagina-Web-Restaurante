@@ -1,5 +1,4 @@
 import { Sequelize } from "sequelize";
-import sequelize from "../../shared/db";
 import { SerieAttributes } from "../domain/serie.interface";
 import { SerieModel } from "../domain/serie.model";
 import { SerieRepository } from "../domain/serie.repository";
@@ -11,8 +10,8 @@ export class DB implements SerieRepository {
         this.serieModel = serieFactory(sequelize)
     }
 
-    async getById(id: number): Promise<SerieModel[]> {
-        const serie = await this.serieModel.findAll({where : {id}})
+    async get(serieAtrributes : SerieAttributes): Promise<SerieModel[]> {
+        const serie = await this.serieModel.findAll({where : {...serieAtrributes}})
         return serie
     }
 
