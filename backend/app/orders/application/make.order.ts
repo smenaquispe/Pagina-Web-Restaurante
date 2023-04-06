@@ -19,7 +19,7 @@ export class MakeOrder {
         const response : OrderModel[] = []
         const { idProducts } = makeOrderStructure
         
-        idProducts.forEach(async (product) => {
+        await idProducts.forEach(async (product) => {
             const attibutes : OrderAttributes = {
                 numberOrder: makeOrderStructure.numberOrder,
                 idUser: makeOrderStructure.idUser,
@@ -30,6 +30,9 @@ export class MakeOrder {
             response.push(await this.create(attibutes))
         })
         
-        return response
+        return JSON.stringify({
+            'message' : 'Order register',
+            'orders' : response
+        })
     }
 }
