@@ -6,6 +6,6 @@ import { UserAttributes } from "./user.interface"
  */
 
 export interface UserRepository {
-    getById(id : number) : Promise<UserModel[]>   
+    get(userAttributes : UserAttributes) : Promise<UserModel[]>   
     create(userAttributes : UserAttributes) : Promise<UserModel>
 }

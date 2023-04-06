@@ -15,8 +15,9 @@ export class DB implements UserRepository {
         this.userModel = userFactory(sequalize)
     }
 
-    async getById(id : number): Promise<UserModel[]> {
-        const user = await this.userModel.findAll({where: {id}})
+    async get(userAttributes: UserAttributes): Promise<UserModel[]> {
+        const { email, passwd } = userAttributes
+        const user = await this.userModel.findAll({where: {email, passwd}})
         return user
     }
 

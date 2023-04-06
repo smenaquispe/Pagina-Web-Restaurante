@@ -4,6 +4,6 @@
  */
  export interface UserAttributes {
     id?: number,
-    email: string,
-    passwd: string
+    email?: string,
+    passwd?: string
 }
