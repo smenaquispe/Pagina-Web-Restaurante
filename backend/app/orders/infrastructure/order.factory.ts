@@ -37,7 +37,7 @@ export function orderFactory(sequalize : Sequelize) : OrderStatic {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        when: {
+        makedAt: {
             type: DataTypes.DATE,
             allowNull: false
         }
