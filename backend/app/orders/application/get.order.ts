@@ -1,3 +1,4 @@
+import { OrderAttributes } from "../domain/order.interface";
 import { OrderRepository } from "../domain/order.repository";
 /**
  * get a order by its id
@@ -6,8 +7,8 @@ import { OrderRepository } from "../domain/order.repository";
 export class GetOrder{
     constructor(private orderRepository : OrderRepository){}
 
-    async run(id : number) {
-        const order = await this.orderRepository.getById(id)
+    async run(orderAttributes : OrderAttributes) {
+        const order = await this.orderRepository.get(orderAttributes)
         return order
     }
 }

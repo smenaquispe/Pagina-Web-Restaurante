@@ -6,7 +6,6 @@ import { OrderAttributes } from "./order.interface";
  */
 
 export interface OrderRepository {
-    getById(id : number) : Promise<OrderModel[]>
+    get(orderAttributes : OrderAttributes) : Promise<OrderModel[]>
     make(orderAttributes : OrderAttributes) : Promise<OrderModel>
-    getByUserId(idUser : number) : Promise<OrderModel[]>
 }

@@ -15,18 +15,13 @@ export class DB implements OrderRepository {
         this.orderModel = orderFactory(sequalize)
     }
 
-    async getById(id: number): Promise<OrderModel[]> {
-        const order = await this.orderModel.findAll({where: {id}})       
+    async get(orderAttributes : OrderAttributes): Promise<OrderModel[]> {
+        const order = await this.orderModel.findAll({where: {...orderAttributes}})       
         return order
     }
 
     async make(orderAttributes: OrderAttributes): Promise<OrderModel> {
         const response = await this.orderModel.create(orderAttributes)       
         return response
-    }
-
-    async getByUserId(idUser: number): Promise<OrderModel[]> {
-        const order = await this.orderModel.findAll({where : {idUser}})
-        return order
     }
 }
