@@ -10,17 +10,28 @@ export class ProductController {
     ) {}
 
     async get(req : Request, res : Response) {
-        const data = req.body
-        const attributes : ProductAttributes = {...data}
-        const product = await this.getProduct.run(attributes)
-        res.status(200).send(product)
+        try {
+            const data = req.body
+            const attributes : ProductAttributes = {...data}
+            const product = await this.getProduct.run(attributes)
+            res.status(200).send(product)            
+        } catch (error) {
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
+        }
     }
 
     async add(req : Request, res : Response) {
-        const data = req.body
-        const attributes : ProductAttributes = {...data}
-        const response = await this.addProduct.run(attributes)
-        res.status(200).send(response)
+        try {
+            const data = req.body
+            const attributes : ProductAttributes = {...data}
+            const response = await this.addProduct.run(attributes)
+            res.status(200).send(response)
+        } catch (error) {
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
+        }
     }
-
 }

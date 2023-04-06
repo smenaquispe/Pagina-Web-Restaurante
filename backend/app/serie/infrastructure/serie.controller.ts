@@ -16,7 +16,9 @@ export class SerieController {
             const serie = await this.getSerie.run(attributes)
             res.status(200).send(serie)
         } catch (error) {
-            res.send(JSON.stringify({'error' : error}))
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
         }
     }
 
@@ -26,9 +28,10 @@ export class SerieController {
             const attributes : SerieAttributes = {...data}
             const response = await this.addSerie.run(attributes)
             res.status(200).send(response)
-        } catch (error) {
-            console.log(error)
-            res.send(JSON.stringify({'error' : error}))
+        } catch (error) {        
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
         }
     }
 }

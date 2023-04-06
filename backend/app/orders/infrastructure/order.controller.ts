@@ -10,16 +10,28 @@ export class OrderController {
     ) {}
 
     async getOrderByAttributes (req : Request, res : Response) {
-        const data = req.body
-        const attibutes : OrderAttributes = {...data}
-        const order = await this.getOrder.run(attibutes)
-        res.status(200).send(order)
+        try {
+            const data = req.body
+            const attibutes : OrderAttributes = {...data}
+            const order = await this.getOrder.run(attibutes)
+            res.status(200).send(order)
+        } catch (error) {
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
+        }
     }
 
     async makeAnOrder (req : Request, res : Response) {
-        const data = req.body
-        const attibutes : OrderAttributes = {...data}
-        const response = await this.makeOrder.run(attibutes)
-        res.status(200).send(response)
+        try {
+            const data = req.body
+            const attibutes : OrderAttributes = {...data}
+            const response = await this.makeOrder.run(attibutes)
+            res.status(200).send(response)
+        } catch (error) {
+            const messageError = JSON.stringify({'error' : error})
+            console.log(messageError)
+            res.send(messageError)
+        }
     }
 }
