@@ -28,7 +28,7 @@ export class OrderController {
             const data = req.body
             const structure : MakeOrderStructure = {...data}
             const response = await this.makeOrder.run(structure)
-            res.status(200).send(JSON.stringify(response))
+            res.status(200).send(response)
         } catch (error) {
             const messageError = {'error' : error}
             console.log(messageError)
