@@ -1,5 +1,7 @@
 import { OrderRepository } from "../domain/order.repository";
 import { OrderAttributes } from "../domain/order.interface";
+import { MakeOrderStructure } from "./make.order.interface";
+import { OrderModel } from "../domain/order.model";
 
 /**
  * class make a order
@@ -8,8 +10,26 @@ import { OrderAttributes } from "../domain/order.interface";
 export class MakeOrder {
     constructor(private orderRepository : OrderRepository) {}
 
-    async run(orderAttributes : OrderAttributes){
+    private async create(orderAttributes : OrderAttributes) {
         const response = await this.orderRepository.make(orderAttributes)
+        return response
+    }
+    
+    async run(makeOrderStructure : MakeOrderStructure){
+        const response : OrderModel[] = []
+        const { idProducts } = makeOrderStructure
+        
+        idProducts.forEach(async (product) => {
+            const attibutes : OrderAttributes = {
+                numberOrder: makeOrderStructure.numberOrder,
+                idUser: makeOrderStructure.idUser,
+                idProduct: product,
+                makedAt: makeOrderStructure.makedAt
+            }
+            
+            response.push(await this.create(attibutes))
+        })
+        
         return response
     }
 }

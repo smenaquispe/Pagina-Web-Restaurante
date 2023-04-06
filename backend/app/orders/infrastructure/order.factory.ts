@@ -19,21 +19,18 @@ export function orderFactory(sequalize : Sequelize) : OrderStatic {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true
+            primaryKey: true,
+            autoIncrement: true
+        },
+        numberOrder: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         },
         idUser: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        price: {
-            type: DataTypes.DECIMAL,
-            allowNull: false
-        },
         idProduct: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        amount: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

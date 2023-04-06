@@ -5,9 +5,8 @@
 
 export interface OrderAttributes {
     id?: number,
+    numberOrder?: number,
     idUser?: number,
-    price?: number,
     idProduct?: number,
-    amount?: number,
     makedAt?: Date
 }

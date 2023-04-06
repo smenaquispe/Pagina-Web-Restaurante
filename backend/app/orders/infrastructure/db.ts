@@ -21,7 +21,7 @@ export class DB implements OrderRepository {
     }
 
     async make(orderAttributes: OrderAttributes): Promise<OrderModel> {
-        const response = await this.orderModel.create(orderAttributes)       
+        const response = await this.orderModel.create(orderAttributes)
         return response
     }
 }
