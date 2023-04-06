@@ -1,6 +1,7 @@
 import express from 'express'
 import {config as dotEnvConfig} from 'dotenv'
 import { userRouter } from './users/infrastructure/user.router';
+import { serieRouter } from './serie/infrastructure/serie.router';
 import sequelize from './shared/db';
 
 const app: express.Application = express();
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.use('/users',userRouter)
+app.use('/serie',serieRouter)
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
