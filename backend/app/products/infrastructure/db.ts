@@ -11,18 +11,13 @@ export class DB implements ProductRepository {
         this.productModel = productFactory(sequalize)
     }
 
-    async getById(id: number): Promise<ProductModel[]> {
-        const product = await this.productModel.findAll({where : {id}})        
+    async get(productAttributes: ProductAttributes): Promise<ProductModel[]> {
+        const product = await this.productModel.findAll({where : {...productAttributes}})        
         return product
     }
     
     async add(productAttributes: ProductAttributes): Promise<ProductModel> {
         const response = await this.productModel.create(productAttributes)
         return response
-    }
-
-    async getBySerie(idSerie: number): Promise<ProductModel[]> {
-        const product = await this.productModel.findAll({where : {idSerie}})       
-        return product
     }
 }

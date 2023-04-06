@@ -2,18 +2,17 @@ import { Request, Response } from "express";
 import { ProductAttributes } from "../domain/product.interface";
 import { AddProduct } from "../application/add.product";
 import { GetProduct } from "../application/get.product";
-import { SerieProduct } from "../application/serie.product";
 
 export class ProductController {
     constructor(
         private getProduct : GetProduct,
-        private addProduct : AddProduct,
-        private serieProduct : SerieProduct
+        private addProduct : AddProduct
     ) {}
 
-    async getById(req : Request, res : Response) {
-        const { id } = req.body
-        const product = await this.getProduct.run(id)
+    async get(req : Request, res : Response) {
+        const data = req.body
+        const attributes : ProductAttributes = {...data}
+        const product = await this.getProduct.run(attributes)
         res.status(200).send(product)
     }
 
@@ -24,9 +23,4 @@ export class ProductController {
         res.status(200).send(response)
     }
 
-    async getBySerie(req : Request, res : Response) {
-        const { idSerie } = req.body
-        const product = await this.serieProduct.run(idSerie)
-        res.status(200).send(product)
-    }
 }
