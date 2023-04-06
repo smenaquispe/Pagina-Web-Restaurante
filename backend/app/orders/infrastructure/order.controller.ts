@@ -12,9 +12,8 @@ export class OrderController {
 
     async getOrderByAttributes (req : Request, res : Response) {
         try {
-            const data = req.body
-            const attibutes : OrderAttributes = {...data}
-            const order = await this.getOrder.run(attibutes)
+            const {numberOrder} = req.body
+            const order = await this.getOrder.run(numberOrder)
             res.status(200).send(order)
         } catch (error) {
             const messageError = JSON.stringify({'error' : error})
