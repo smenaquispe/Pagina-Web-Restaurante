@@ -19,16 +19,15 @@ export class MakeOrder {
         const response : OrderModel[] = []
         const { idProducts } = makeOrderStructure
         
-        idProducts.forEach(async (product) => {
+        for(const id of idProducts){
             const attibutes : OrderAttributes = {
                 numberOrder: makeOrderStructure.numberOrder,
                 idUser: makeOrderStructure.idUser,
-                idProduct: product,
+                idProduct: id,
                 makedAt: makeOrderStructure.makedAt
-            }
-            
+            }            
             response.push(await this.create(attibutes))
-        })
+        }
         
         return response
     }

@@ -1,7 +1,6 @@
 import { Request, Response } from "express-serve-static-core";
 import { GetOrder } from "../application/get.order";
 import { MakeOrder } from "../application/make.order";
-import { OrderAttributes } from "../domain/order.interface";
 import { MakeOrderStructure } from "../application/make.order.interface";
 
 export class OrderController {
@@ -29,7 +28,7 @@ export class OrderController {
             const response = await this.makeOrder.run(structure)
             res.status(200).send(response)
         } catch (error) {
-            const messageError = {'error' : error}
+            const messageError = JSON.stringify({'error' : error})
             console.log(messageError)
             res.send(messageError)
         }
