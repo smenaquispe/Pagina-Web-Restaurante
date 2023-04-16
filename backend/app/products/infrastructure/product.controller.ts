@@ -26,7 +26,7 @@ export class ProductController {
     async add(req : Request, res : Response) {
         try {
             const data = req.body
-            const attributes : ProductAttributes = {...data}
+            const attributes : AddProductStructure = {...data}
             const response = await this.addProduct.run(attributes)
             res.status(200).send(response)
         } catch (error) {
