@@ -19,11 +19,11 @@ interface dbStructure {
 
 
 const dbConfig : dbStructure = {
-    HOST: '127.0.0.1',
-    PORT: 3306,
+    HOST: 'containers-us-west-142.railway.app',
+    PORT: 6430,
     USER: 'root'    ,
-    PASSWORD: '1234',
-    DB: 'webDelivery',
+    PASSWORD: 'yte8rqb61vpMeZovEpiQ',
+    DB: 'railway',
     dialect: 'mysql', 
     pool: {
         max: 5,
