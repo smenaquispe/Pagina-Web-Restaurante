@@ -1,5 +1,14 @@
+import ListProducts from "./components/ListProducts"
+import { ContextProvider } from "./providers/Context"
+
 function App() {
-  return <h1>Hola mundo</h1>
+  return (
+    <>
+      <ContextProvider>
+          <ListProducts />  
+      </ContextProvider>
+    </>
+  ) 
 }
 
 export default App
