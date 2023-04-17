@@ -5,6 +5,7 @@ import { serieRouter } from './serie/infrastructure/serie.router';
 import { productRouter } from './products/infrastructure/product.router';
 import { orderRouter } from './orders/infrastructure/order.router';
 import sequelize from './shared/db';
+import cors from 'cors'
 
 const app: express.Application = express();
 dotEnvConfig();
@@ -18,7 +19,7 @@ sequelize.authenticate()
 .then(() => console.log('conntected to db'))
 .catch(err => console.log('error connecting to db -> ' + err))
 
-
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
