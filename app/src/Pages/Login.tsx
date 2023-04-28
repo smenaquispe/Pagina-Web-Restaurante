@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import { Context } from "../providers/Context";
 
 function Login() {
-    const { BACKEND_URL } = useContext(Context);
+    const { BACKEND_URL, setAuthorized } = useContext(Context);
 
-    const handleForm = (e : React.FormEvent<HTMLFormElement>) => {
+    const handleForm = useCallback((e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const formData = new FormData(e.currentTarget)
         fetch(BACKEND_URL + '/users', {
@@ -19,9 +19,11 @@ function Login() {
         })
         .then(res => res.json())
         .then(json => {
-            console.log(json)
+            if(json['user-info']) {
+                setAuthorized(true)
+            }
         })
-    }
+    }, [])
 
     return (
         <form onSubmit={handleForm}>
