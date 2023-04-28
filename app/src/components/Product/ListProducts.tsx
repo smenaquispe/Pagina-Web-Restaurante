@@ -1,6 +1,6 @@
-import Product from "./Product/Product";
-import ProductInterface from "./Product/Product.interface";
-import withList from "./withList";
+import Product from "./Product";
+import ProductInterface from "./Product.interface";
+import withList from "../withList";
 
 interface Props {
     items: ProductInterface[]
@@ -18,8 +18,8 @@ function ListProducts_(props : Props) {
   )
 }
 
-function ListProducts() {
-    return withList(ListProducts_, '/products')
+function ListProducts(props : ProductInterface) {
+    return withList(ListProducts_, '/products', props)
 }
 
 export default ListProducts;

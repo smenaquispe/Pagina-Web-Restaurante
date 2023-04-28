@@ -1,6 +1,6 @@
-import Serie from './Serie/Serie.'
-import SerieInterface from './Serie/Serie.interface'
-import withList from './withList'
+import Serie from './Serie.'
+import SerieInterface from './Serie.interface'
+import withList from '../withList'
 
 interface Props {
     items: SerieInterface[]

@@ -1,5 +1,5 @@
-import ListProducts from "./components/ListProducts"
-import ListSerie from "./components/ListSerie"
+import ListProducts from "./components/Product/ListProducts"
+import ListSerie from "./components/Serie/ListSerie"
 import { ContextProvider } from "./providers/Context"
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
     <>
       <ContextProvider>
         <>
-          <ListProducts />
           <ListSerie />
         </>
       </ContextProvider>
