@@ -13,11 +13,11 @@ export class ProductController {
     async get(req : Request, res : Response) {
         try {
             const data = req.body
-            const structure : AddProductStructure = JSON.parse({...data})
+            const structure : ProductAttributes = JSON.parse({...data})
             const product = await this.getProduct.run(structure)
             res.status(200).send(product)            
         } catch (error) {
-            const messageError = JSON.stringify({'error' : error})
+            const messageError = {'error' : error}
             console.log(messageError)
             res.send(messageError)
         }
@@ -30,7 +30,7 @@ export class ProductController {
             const response = await this.addProduct.run(attributes)
             res.status(200).send(response)
         } catch (error) {
-            const messageError = JSON.stringify({'error' : error})
+            const messageError = {'error' : error}
             console.log(messageError)
             res.send(messageError)
         }

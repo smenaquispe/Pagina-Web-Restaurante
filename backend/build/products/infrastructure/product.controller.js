@@ -24,7 +24,7 @@ class ProductController {
                 res.status(200).send(product);
             }
             catch (error) {
-                const messageError = JSON.stringify({ 'error': error });
+                const messageError = { 'error': error };
                 console.log(messageError);
                 res.send(messageError);
             }
@@ -39,7 +39,7 @@ class ProductController {
                 res.status(200).send(response);
             }
             catch (error) {
-                const messageError = JSON.stringify({ 'error': error });
+                const messageError = { 'error': error };
                 console.log(messageError);
                 res.send(messageError);
             }
