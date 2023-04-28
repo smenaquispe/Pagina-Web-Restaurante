@@ -1,4 +1,5 @@
-export default interface ProductInterface {
-    id: number,
+import CommonInterface from "../Common.interface";
+
+export default interface ProductInterface extends CommonInterface {
     idSerie: number
 }

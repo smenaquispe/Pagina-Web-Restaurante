@@ -1,9 +1,9 @@
 import ProductInterface from "./Product.interface"
 
-function Product({ data } : { data : ProductInterface }) {
+function Product(props : ProductInterface ) {
     return (
         <div>
-            Producto id: {data.id} serie: {data.idSerie}
+            Producto id: {props.id} serie: {props.idSerie}
         </div>
     )
 }

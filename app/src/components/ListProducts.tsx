@@ -1,35 +1,25 @@
-import Product from "./Product/Product"
-import { useContext, useEffect, useState } from "react"
-import { Context } from "../providers/Context"
+import Product from "./Product/Product";
 import ProductInterface from "./Product/Product.interface";
+import withList from "./withList";
 
-function ListProducts() {
-
-    const [products, setproducts] = useState< Array <ProductInterface> >();
-    const { BACKEND_URL } = useContext(Context)
-
-    useEffect(() => {
-        fetch(BACKEND_URL + '/products', {
-            method: 'POST'
-        })
-        .then(res => res.json())
-        .then(json => setproducts(json))
-    }, [])
-
-    return (
-        <ul>
-            {
-                products &&
-                products.map(p => {
-                    return (
-                        <li key={p.id}>
-                            <Product data={p} />
-                        </li>
-                    )
-                })
-            }            
-        </ul>
-    )
+interface Props {
+    items: ProductInterface[]
 }
 
-export default ListProducts
+function ListProducts_(props : Props) {
+  return (
+    <ul>
+      {props.items.map(item => (
+        <li key={item.id}>
+          <Product {...item} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+function ListProducts() {
+    return withList(ListProducts_, '/products')
+}
+
+export default ListProducts;
