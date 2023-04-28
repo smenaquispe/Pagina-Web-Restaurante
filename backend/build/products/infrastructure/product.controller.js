@@ -19,7 +19,7 @@ class ProductController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const data = req.body;
-                const structure = JSON.parse(Object.assign({}, data));
+                const structure = Object.assign({}, data);
                 const product = yield this.getProduct.run(structure);
                 res.status(200).send(product);
             }

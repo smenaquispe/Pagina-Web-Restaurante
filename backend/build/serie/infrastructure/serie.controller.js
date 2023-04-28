@@ -19,7 +19,7 @@ class SerieController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const data = req.body;
-                const attributes = JSON.parse(Object.assign({}, data));
+                const attributes = Object.assign({}, data);
                 const serie = yield this.getSerie.run(attributes);
                 res.status(200).send(serie);
             }

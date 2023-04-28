@@ -13,7 +13,7 @@ export class ProductController {
     async get(req : Request, res : Response) {
         try {
             const data = req.body
-            const structure : ProductAttributes = JSON.parse({...data})
+            const structure : ProductAttributes = {...data}
             const product = await this.getProduct.run(structure)
             res.status(200).send(product)            
         } catch (error) {

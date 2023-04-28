@@ -12,7 +12,7 @@ export class SerieController {
     async getSerieByAttributes(req : Request, res: Response) {
         try {
             const data = req.body
-            const attributes : SerieAttributes = JSON.parse({...data})
+            const attributes : SerieAttributes = {...data}
             const serie = await this.getSerie.run(attributes)
             res.status(200).send(serie)
         } catch (error) {
