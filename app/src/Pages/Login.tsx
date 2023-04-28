@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from "react";
 import { Context } from "../providers/Context";
 
 function Login() {
-    const { BACKEND_URL, setAuthorized } = useContext(Context);
+    const { BACKEND_URL, dispatch } = useContext(Context);
 
     const handleForm = useCallback((e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -20,7 +20,10 @@ function Login() {
         .then(res => res.json())
         .then(json => {
             if(json['user-info']) {
-                setAuthorized(true)
+                dispatch({
+                    type: 'login',
+                    payload: { userId: json['user-info']['id']}
+                })
             }
         })
     }, [])
